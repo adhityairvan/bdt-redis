@@ -117,11 +117,12 @@ atau juga bisa membuat service baru untuk menjalankan secara otomatis redis sent
 
 <h2 id="hasil-simulasi-fail-over">Hasil simulasi Fail Over</h2>
 <p>menghentikan master node<br>
-
+```
+  sudo systemctl stop redis
+```
 <p>respon dari sentinel saat master node mati<br>
-
-<p>respon pada slave node<br>
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/Annotation%202019-11-23%20195612.jpg)
+  
 <p>salah satu slave node berubah menjadi master node<br>
 
 
@@ -180,21 +181,21 @@ Terdapat 3 skenario pengujian
 
 ### Hasil Pengujian 50 Request
 Wordpress Dengan Redis cache
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/redis50.jpg)
 Wordpress Tanpa Redis cache
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/no%20redis-50.jpg)
 Pada dua gambar diaatas dapat kita lihat bahwa tidak terdapat banyak perbedaan karena resource ram dan cpu pada webserver masih mumpuni untuk menghandle request nya
 
 ### Hasil Pengujian 243 Request
 Wordpress Dengan Redis cache
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/redis100.jpg)
 Wordpress Tanpa Redis cache
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/no%20redis%20200.jpg)
 Hasil serupa dapat kita lihat pada pengujian 243 Request ini. Ada sedikit perbedaan dengan redis rata2 sample time lebih cepat 10ms.
 
 ### Hasil Pengujian 343 Request
 Wordpress Dengan Redis cache
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/redis200.jpg)
 Wordpress Tanpa Redis cache
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/no%20redis-200.jpg)
 Perbedaan signifikan baru terlihat dengan 343 request. Pada server yang tidak terpasang redis, terlihat virtual machine nya kewalahan dan menghabiskan resource ram yang ada. Hal ini terjadi karena Webserver banyak melakukan request ke database dan database juga membutuhkan tambahan memori untuk menghandle request yang ada.
