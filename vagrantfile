@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+    (1..3).each do |i|
+      config.vm.define "rediscluster#{i}" do |node|
+        node.vm.hostname = "rediscluster#{i}"
+        node.vm.box = "bento/ubuntu-18.04"
+        node.vm.network "private_network", ip: "10.10.15.#{142 + i}"
+        node.vm.provider "virtualbox" do |vb|
+          vb.name = "rediscluster#{i}"
+          vb.gui = false
+          vb.memory = "512"
+        end
+  
+        node.vm.provision "shell", path: "bootstrap.sh", privileged: false
+      end
+    end
+    config.vm.define "apache" do |node|
+      node.vm.hostname = "apacheserver"
+      node.vm.box = "bento/ubuntu-18.04"
+      node.vm.network "private_network", ip: "10.10.15.146"
+      node.vm.network "forwarded_port", guest: 80, host: 8080
+      node.vm.provider "virtualbox" do |vb|
+        vb.name = "apacheserver"
+        vb.gui = false
+        vb.memory = "1024"
+      end
+    end
+  end
