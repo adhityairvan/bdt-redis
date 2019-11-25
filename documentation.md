@@ -124,7 +124,7 @@ atau juga bisa membuat service baru untuk menjalankan secara otomatis redis sent
 ![](https://github.com/adhityairvan/bdt-redis/raw/master/image/Annotation%202019-11-23%20195612.jpg)
   
 <p>salah satu slave node berubah menjadi master node<br>
-
+![](https://github.com/adhityairvan/bdt-redis/raw/master/image/master.jpg)
 
 # IMPLEMENTASI WORDPRESS
 ## Membuat Server LAMP untuk menjalankan wordpress
